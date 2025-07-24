@@ -1,27 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evosix</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/style/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evosix Esports Tournament</title>
+  <link rel="stylesheet" href="/style/style.css" />
+
 </head>
 <body>
     <header class="navbar">
-        <img src="/images/EVOSIX.png" alt="Evosix Logo" id="logo">
-        <nav>
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Schedule</a></li>
-                <li><a href="">Game</a></li>
-                <li><a href="">Teams</a></li>
-                <li><a href="">Prizes</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Register</a></li>
-            </ul>
-        </nav>
+    <div class="nav-container">
+        <div class="logo">EVOSIX</div>
+        <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#games">Games</a></li>
+        <li><a href="#teams">Teams</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#register" class="btn-glow">Register</a></li>
+        </ul>
+    </div>
     </header>
+
+    <section class="hero">
+    <video class="hero-bg" autoplay muted loop playsinline>
+        <source src="/video/8c5ac0e8-cd35-452c-b722-1051fa55c74d.mp4" type="video/mp4" />
+        Browser kamu tidak mendukung tag video.
+    </video>
+        <div class="hero-content">
+        <h1>One Stage. One Goal.</h1>
+        <p>Gather your team, conquer the game, and leave your mark in school esports.</p>
+        <a href="#tournament-info" class="btn-outline">View Tournament Info</a>
+        <a href="#register" class="btn-red">Register Your Team Now</a>
+        </div>
+    </section>
+
+    <section class="sponsor">
+    <div class="sponsor-container">
+        <h2>Powered by Our Sponsors</h2>
+        <div class="sponsor-logos">
+            <img src="/images/logo.png" alt="Sponsor 1" />
+            <img src="/images/logo.png" alt="Sponsor 2" />
+            <img src="/images/logo.png" alt="Sponsor 3" />
+            <img src="/images/logo.png" alt="Sponsor 4" />
+        </div>
+    </div>
+    </section>
+
+
+
+
+  <section class="tagline">
+    <h2><span class="red">FUCK</span> JUST FOR GAMERS</h2>
+    <p>
+        Arul dan dany gay
+    </p>
+  </section>
+
+  <section class="register" id="register">
+    <div class="register-box">
+      <h2>Daftar Akun Turnamen</h2>
+      <form>
+        <input type="text" placeholder="Nama Lengkap" required />
+        <input type="email" placeholder="Email" required />
+        <input type="password" placeholder="Password" required />
+        <input type="password" placeholder="Konfirmasi Password" required />
+        <button type="submit" class="btn-red">Register</button>
+      </form>
+    </div>
+  </section>
 </body>
 </html>
-
