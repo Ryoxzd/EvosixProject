@@ -409,39 +409,63 @@ body {
 
 .card-section {
     align-content: center;
+    margin-top: 40px;
 }
 
+.card-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    }
+
 .card-item {
+    flex: 1 1 200px;
+    max-width: 260px;
+    min-height: 180px;
+    background-color: #222;
+    padding: 20px;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin: 20px;
-    background-color: #ffffff;
+
     clip-path: polygon(
-        0% 95%,     
-        5% 0%, 
-        95% 0%,  
-        100% 0%,    
-        95% 100%,   
+        0% 100%,      
+        10% 0%,       
+        90% 0%,  
+        100% 10%,     
+        90% 100%,   
         0% 100%
     );
 
     -webkit-clip-path: polygon(
-        0% 95%,
-        5% 0%,
-        95% 0%,
-        100% 0%,
-        95% 100%,
+        0% 100%,
+        10% 0%,
+        90% 0%,
+        100% 10%,
+        90% 100%,
         0% 100%
     );
+
+
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
+.card-item:hover {
+    transform: scale(1.05);
+    background-color: #333;
+    }
+
 .card-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4747;
+    margin-bottom: 8px;
 }
 
 .card-description {
-    font-size: 16px;
-    color: #bbbbbb;
+    font-size: 14px;
+    color: #ccc;
+    text-align: center;
 }
