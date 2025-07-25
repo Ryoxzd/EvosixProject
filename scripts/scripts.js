@@ -25,5 +25,31 @@ const countdown = () => {
     document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
 };
 
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-links a");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute("id");
+      const navLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+
+      if (entry.isIntersecting) {
+        navLinks.forEach((link) => link.classList.remove("active"));
+        if (navLink) navLink.classList.add("active");
+      }
+    });
+  },
+  {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.6, // 60% visible baru dianggap aktif
+  }
+);
+
+sections.forEach((section) => {
+  observer.observe(section);
+});
+
 setInterval(countdown, 1000);
 countdown(); 
