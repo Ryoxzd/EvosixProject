@@ -5,6 +5,21 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Horizon';
+    src: url('/fonts/horizon.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes updown {
+    0% {
+        transform: translateY(-100px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
 * {
     margin: 0;
     padding: 0;
@@ -24,6 +39,9 @@ body {
 }
 
 .navbar {
+    margin:15px;
+    margin-right: 150px;
+    border-radius: 50px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -32,6 +50,7 @@ body {
     background: rgba(10, 10, 20, 0.6);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     z-index: 999;
+    animation: updown 0.5s;
 }
 
 .nav-container {
@@ -44,7 +63,8 @@ body {
     font-size: 34px;
     font-weight: 900;
     color: #fff;
-    text-shadow: 0 0 10px #fff;
+    /* text-shadow: 0 0 10px #fff; */
+    font-family: 'Horizon';
     letter-spacing: 1.5px;
 }
 
@@ -188,6 +208,7 @@ body {
 .sponsor-logos img {
   max-height: 50px;
   opacity: 0.8;
+  /* box-shadow: 0 0 1px #ff1e1e; */
   transition: opacity 0.3s, transform 0.3s;
 }
 
