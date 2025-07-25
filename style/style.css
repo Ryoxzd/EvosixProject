@@ -578,51 +578,51 @@ body {
 }
 
 .about {
-  background: #0a0a0a;
-  color: white;
-  padding: 80px 20px;
-  font-family: 'Poppins', sans-serif;
-}
+    background: #0a0a0a;
+    color: white;
+    padding: 80px 20px;
+    font-family: 'Poppins', sans-serif;
+    }
 
 .about-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  max-width: 1200px;
-  margin: auto;
-  gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+    gap: 40px;
 }
 
 .about-text {
-  flex: 1 1 500px;
+    flex: 1 1 500px;
 }
 
 .about-text h2 {
-  font-size: 36px;
-  margin-bottom: 20px;
-  font-family: 'Orbitron', sans-serif;
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .about-text .highlight {
-  color: #ff3c3c;
+    color: #ff3c3c;
 }
 
 .about-text p {
-  font-size: 16px;
-  color: #ccc;
-  line-height: 1.7;
-  margin-bottom: 20px;
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.7;
+    margin-bottom: 20px;
 }
 
 .about-image {
-  flex: 1 1 400px;
-  text-align: center;
+    flex: 1 1 400px;
+    text-align: center;
 }
 
 .about-image img {
-  max-width: 100%;
-  border-radius: 16px;
+    max-width: 100%;
+    border-radius: 16px;
 }
 
 .countdown-time {
