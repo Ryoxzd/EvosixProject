@@ -11,6 +11,12 @@
     box-sizing: border-box;
 }
 
+
+html, body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 body {
     background: #0a0a0a;
     font-family: 'Poppins', sans-serif;
@@ -186,31 +192,34 @@ body {
 }
 
 .sponsor-logos img:hover {
-  opacity: 1;
-  transform: scale(1.05);
+    opacity: 1;
+    transform: scale(1.05);
 }
-
-
-
 
 .tagline {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 24px;
+    background-color: #0d0d0d;
 }
 
 .tagline h2 {
-    font-size: 32px;
-    font-weight: 800;
-    }
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    color: #fff;
+}
 
 .red {
-    color: #ff1e1e;
+    color: #ff4d4d;
 }
 
 .tagline p {
     margin-top: 20px;
-    color: #aaa;
-    max-width: 600px;
+    color: #bbbbbb;
+    max-width: 640px;
     margin-left: auto;
     margin-right: auto;
+    font-size: 16px;
+    line-height: 1.6;
 }
