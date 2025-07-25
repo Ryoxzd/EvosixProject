@@ -43,7 +43,7 @@ const observer = new IntersectionObserver(
   {
     root: null,
     rootMargin: "0px",
-    threshold: 0.6, // 60% visible baru dianggap aktif
+    threshold: 0.6,
   }
 );
 
