@@ -52,6 +52,21 @@
     }
 }
 
+@media (max-width: 600px) {
+    #countdown div {
+        padding: 16px 20px;
+    }
+
+    #countdown span {
+        font-size: 28px;
+    }
+
+    #countdown p {
+        font-size: 12px;
+    }
+}
+
+
 * {
     margin: 0;
     padding: 0;
@@ -169,29 +184,95 @@ body {
     position: relative;
     height: 100vh;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
 .hero-bg {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    top: 0;
+    left: 0;
     z-index: -1;
-    
 }
 
 .hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
     text-align: center;
-    z-index: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 40px 20px;
+    color: white;
+    z-index: 2;
+    position: relative;
 }
 
+.hero-countdown {
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    z-index: 2;
+    text-align: center;
+    backdrop-filter: blur(4px);
+}
+
+.countdown-title {
+    font-size: 30px;
+    margin-bottom: 30px;
+    font-family:  sans-serif;
+    letter-spacing: 2px;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+#countdown div {
+    background: #111;
+    padding: 40px 60px;
+    color: white;
+    clip-path: polygon(
+        0% 100%,      
+        10% 0%,       
+        90% 0%,  
+        100% 10%,     
+        90% 100%,   
+        0% 100%
+    );
+    -webkit-clip-path: polygon(
+        0% 100%,      
+        10% 0%,       
+        90% 0%,  
+        100% 10%,     
+        90% 100%,   
+        0% 100%
+    );
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+#countdown span {
+    font-size: 36px;
+    font-weight: bold;
+    display: block;
+}
+
+#countdown p {
+    font-size: 14px;
+    color: #bbb;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
 .hero-content h1 {
     font-family: 'Evosport';
@@ -471,36 +552,51 @@ body {
     text-align: center;
 }
 
-.countdown-section {
-    color: #fff;
-    text-align: center;
-    padding: 80px 20px;
-    font-family: 'Orbitron', sans-serif;
-    position: relative;
+.about {
+  background: #0a0a0a;
+  color: white;
+  padding: 80px 20px;
+  font-family: 'Poppins', sans-serif;
 }
 
-.countdown-title {
-    font-size: 36px;
-    margin-bottom: 30px;
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
 }
 
-#countdown {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    font-size: 40px;
-    font-weight: bold;
+.about-text {
+  flex: 1 1 500px;
 }
 
-#countdown div {
-    background: #222;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #ff3c3c55;
+.about-text h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  font-family: 'Orbitron', sans-serif;
 }
 
-#countdown p {
-    margin-top: 10px;
-    font-size: 14px;
-    color: #bbb;
+.about-text .highlight {
+  color: #ff3c3c;
+}
+
+.about-text p {
+  font-size: 16px;
+  color: #ccc;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.about-image {
+  flex: 1 1 400px;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 60, 60, 0.1);
 }
