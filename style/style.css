@@ -81,7 +81,6 @@ body {
     font-size: 34px;
     font-weight: 900;
     color: #fff;
-    /* text-shadow: 0 0 10px #fff; */
     font-family: 'Horizon';
     letter-spacing: 1.5px;
 }
@@ -226,7 +225,6 @@ body {
 .sponsor-logos img {
   max-height: 50px;
   opacity: 0.8;
-  /* box-shadow: 0 0 1px #ff1e1e; */
   transition: opacity 0.3s, transform 0.3s;
 }
 
