@@ -25,6 +25,8 @@ const countdown = () => {
     document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
 };
 
+
+
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-links a");
 

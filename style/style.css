@@ -862,9 +862,12 @@ body {
 }
 
 
+
 section:not(.sponsor .hero) {
   margin-bottom: 80px;
 }
+
+/* Eh dani cara bikin dropdown? */
 
 /* DANI KAMU URUS BAGIAN HP NANTI :v */
 @media (max-width: 768px) {
