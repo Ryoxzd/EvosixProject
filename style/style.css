@@ -12,6 +12,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'Aldo';
+    src: url('/fonts/AldotheApache.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @keyframes updown {
     0% {
         transform: translateY(-100px);
@@ -286,7 +293,7 @@ body {
 }
 
 .hero-content h1 {
-    font-family: 'Evosport';
+    font-family: 'Aldo';
     font-size: 70px;
     font-weight: 800;
     opacity: 0;
@@ -332,6 +339,7 @@ body {
     opacity: 0;
     animation: downupopacity 1s forwards;
     animation-delay: 0.9s;
+    margin-left: 10px;
 }
 
 .btn-outline:hover {
@@ -620,4 +628,55 @@ body {
 .countdown-time {
     font-family: 'Horizon', sans-serif;
     
+}
+
+.announcements {
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 39px;
+    margin-bottom: 40px;
+    font-family: 'Aldo';
+    color: #ff4747;
+}
+
+.announcement-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-wrap: balance;
+}
+
+.announcement-item {
+    display: flex;
+    border-left: 4px solid #ff4747;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    transition: transform 0.3s;
+}
+
+.announcement-item:hover {
+    transform: translateY(-10px);
+    background-color: #222;
+}
+
+.announcement-item h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.announcement-item p {
+    color: #bbbbbb;
+    font-size: 16px;
+    text-align: left;
+}
+
+.announcement-icon {
+    margin-right: 40px;
+    width: 30px;
 }
