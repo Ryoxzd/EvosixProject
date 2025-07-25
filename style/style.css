@@ -501,14 +501,11 @@ body {
 .card-section {
     align-content: center;
     margin-top: 40px;
-}
-
-.card-section {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 24px;
-    }
+}
 
 .card-item {
     flex: 1 1 200px;
@@ -552,7 +549,7 @@ body {
 .card-title {
     font-size: 20px;
     font-weight: bold;
-    color: #ff4747;
+    color: #ff4747 !important;
     margin-bottom: 8px;
 }
 
@@ -613,4 +610,5 @@ body {
 
 .countdown-time {
     font-family: 'Horizon', sans-serif;
+    
 }
