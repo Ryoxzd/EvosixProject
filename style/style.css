@@ -39,9 +39,9 @@ body {
 }
 
 .navbar {
-    margin:15px;
+    margin: 15px;
     margin-right: 150px;
-    border-radius: 50px;
+      border-radius: 0;
     position: fixed;
     top: 0;
     width: 100%;
@@ -51,7 +51,25 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     z-index: 999;
     animation: updown 0.5s;
+    clip-path: polygon(
+        0% 95%,     
+        5% 0%, 
+        95% 0%,  
+        100% 5%,    
+        95% 100%,   
+        5% 100%
+    );
+
+    -webkit-clip-path: polygon(
+        0% 95%,
+        5% 0%,
+        95% 0%,
+        100% 5%,
+        95% 100%,
+        5% 100%
+    );
 }
+
 
 .nav-container {
     display: flex;
