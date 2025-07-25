@@ -218,6 +218,7 @@ body {
     z-index: 2;
     text-align: center;
     backdrop-filter: blur(4px);
+    animation: downupopacity 1s forwards;
 }
 
 .countdown-title {
@@ -389,6 +390,14 @@ body {
     color: #fff;
 }
 
+.about-text h2 {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    color: #fff;
+}
+
 .red {
     color: #ff4d4d;
 }
@@ -505,12 +514,13 @@ body {
     flex: 1 1 200px;
     max-width: 260px;
     min-height: 180px;
-    background-color: #222;
+    background-color: #111;
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border: 1px solid #333;
 
     clip-path: polygon(
         0% 100%,      
@@ -599,4 +609,8 @@ body {
   max-width: 100%;
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(255, 60, 60, 0.1);
+}
+
+.countdown-time {
+    font-family: 'Horizon', sans-serif;
 }
