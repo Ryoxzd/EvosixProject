@@ -103,6 +103,7 @@ body {
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     z-index: 999;
     animation: updown 0.5s;
+    border: 1px solid #333;
     clip-path: polygon(
         0% 95%,     
         5% 0%, 
@@ -131,11 +132,11 @@ body {
 }
 
 .logo {
-    font-size: 34px;
+    font-size: 22px;
     font-weight: 900;
+    letter-spacing: 5px;
     color: #fff;
     font-family: 'Horizon';
-    letter-spacing: 1.5px;
 }
 
 .nav-links {
@@ -182,12 +183,12 @@ body {
 
 
 .btn-glow {
-    background: #ff4747;
+    background: #ff1e1e;
     padding: 8px 18px;
     border-radius: 6px;
     color: #fff;
     font-weight: 700;
-    box-shadow: 0 0 10px #ff4747, 0 0 20px rgba(255, 71, 71, 0.5);
+    box-shadow: 0 0 10px #ff1e1e, 0 0 20px rgba(255, 111, 111, 0.5);
     transition: 0.3s;
 }
 
@@ -294,6 +295,7 @@ body {
 
 .hero-content h1 {
     font-family: 'Aldo';
+    letter-spacing: 5px;
     font-size: 70px;
     font-weight: 800;
     opacity: 0;
@@ -380,6 +382,12 @@ body {
     gap: 40px;
 }
 
+.sponsor-container h2 {
+    font-family: 'Aldo';
+    letter-spacing: 5px;
+    font-size: 42px;
+}
+
 .sponsor-logos img {
     max-height: 120px;
     max-width: 180px;
@@ -405,7 +413,7 @@ body {
     font-size: 50px;
     font-weight: 900;
     line-height: 1.2;
-    letter-spacing: -0.5px;
+    letter-spacing: 5px;
     color: #fff;
 }
 
@@ -413,12 +421,16 @@ body {
     font-size: 36px;
     font-weight: 900;
     line-height: 1.2;
-    letter-spacing: -0.5px;
+    letter-spacing: 5px;
     color: #fff;
 }
 
 .red {
     color: #ff4747;
+}
+
+.white {
+    color: #fff;
 }
 
 .tagline p {
@@ -600,9 +612,10 @@ body {
 }
 
 .about-text h2 {
-    font-size: 36px;
+    font-size: 42px;
+    letter-spacing: 5px;
     margin-bottom: 20px;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Aldo', sans-serif;
 }
 
 .about-text .highlight {
@@ -638,6 +651,7 @@ body {
 .section-title {
     font-size: 39px;
     margin-bottom: 40px;
+    letter-spacing: 5px;
     font-family: 'Aldo';
     color: #ff4747;
 }
@@ -681,6 +695,10 @@ body {
     width: 30px;
 }
 
+.announcement-svg {
+    padding-top: 10px;
+}
+
 .games {
     padding: 60px 20px;
     text-align: center;
@@ -689,6 +707,7 @@ body {
 .section-title-2 {
     font-size: 38px;
     margin-bottom: 40px;
+    letter-spacing: 5px;
     color: #ff4747;
     text-align: center;
     font-family: 'Aldo';
@@ -708,6 +727,14 @@ body {
     overflow: hidden;
     border-radius: 20px;
     clip-path: polygon(
+        0% 100%,      
+        10% 0%,       
+        90% 0%,  
+        100% 10%,     
+        90% 100%,   
+        0% 100%
+    );
+    -webkit-clip-path: polygon(
         0% 100%,      
         10% 0%,       
         90% 0%,  
@@ -767,10 +794,10 @@ body {
 .section-title-3 {
     font-family: 'Aldo', sans-serif;
     font-size: 40px;
+    letter-spacing: 5px;
     margin-bottom: 50px;
     color: #ff4747;
     text-align: center;
-    letter-spacing: 1px;
     position: relative;
 }
 
