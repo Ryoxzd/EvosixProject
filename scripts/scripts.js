@@ -25,6 +25,33 @@ const countdown = () => {
     document.getElementById("seconds").innerText = s.toString().padStart(2, '0');
 };
 
+//Untuk Navbar YA dani chan
+const trigger = document.getElementById('dropdown-trigger');
+const menu = document.getElementById('dropdown-menu');
+
+trigger.addEventListener('mouseenter', () => {
+  const rect = trigger.getBoundingClientRect();
+
+  menu.style.display = 'block';
+  menu.style.top = window.scrollY + rect.bottom + 8 + 'px';
+  menu.style.left = window.scrollX + rect.left + 'px';
+});
+
+trigger.addEventListener('mouseleave', () => {
+  setTimeout(() => {
+    if (!menu.matches(':hover')) {
+      menu.style.display = 'none';
+    }
+  }, 100);
+});
+
+menu.addEventListener('mouseleave', () => {
+    menu.style.display = 'none';
+});
+
+menu.addEventListener('mouseenter', () => {
+    menu.style.display = 'block';
+});
 
 
 const sections = document.querySelectorAll("section[id]");

@@ -181,6 +181,37 @@ body {
     width: 100%;
 }
 
+#dropdown-trigger {
+    position: relative;
+}
+
+.dropdown-menu-fix {
+    position: absolute;
+    left: auto;
+    right: 60px;
+    background: rgba(20, 20, 30, 0.95);
+    padding: 0.5rem 0;
+    border-radius: 0 0 8px 8px;
+    min-width: 150px;
+    list-style: none;
+    display: none;
+    z-index: 1000;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-menu-fix li a {
+    padding: 0.5rem 1rem;
+    display: block;
+    color: #ccc;
+    text-decoration: none;
+}
+
+.dropdown-menu-fix li a:hover {
+    background: #444;
+    color: white;
+}
+
 
 .btn-glow {
     background: #ff1e1e;
