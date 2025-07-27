@@ -53,6 +53,95 @@ menu.addEventListener('mouseenter', () => {
     menu.style.display = 'block';
 });
 
+//bagian regis
+document.getElementById("openModal").addEventListener("click", function() {
+  document.getElementById("registerModal").style.display = "block";
+});
+
+document.getElementById("closeModal").addEventListener("click", function() {
+  document.getElementById("registerModal").style.display = "none";
+});
+
+window.addEventListener("click", function(event) {
+  if (event.target == document.getElementById("registerModal")) {
+    document.getElementById("registerModal").style.display = "none";
+  }
+});
+
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  document.getElementById("registerModal").style.display = "none";
+});
+
+document.getElementById("openModal").addEventListener("click", function() {
+  document.getElementById("registerModal").style.display = "block";
+});
+
+document.getElementById("closeModal").addEventListener("click", function() {
+  document.getElementById("registerModal").style.display = "none";
+});
+
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+    document.getElementById("registerModal").style.display = "none"; 
+    document.getElementById("paymentModal").style.display = "block";
+});
+
+function showQRIS() {
+  document.getElementById("qrisContainer").style.display = "block";
+}
+
+function closePaymentModal() {
+  document.getElementById("paymentModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+  const registerModal = document.getElementById("registerModal");
+  const paymentModal = document.getElementById("paymentModal");
+  if (event.target === registerModal) {
+    registerModal.style.display = "none";
+  }
+  if (event.target === paymentModal) {
+    paymentModal.style.display = "none";
+  }
+};
+
+function showTicketModal() {
+  const teamName = document.getElementById("teamName").value;
+  const game = document.getElementById("game").value;
+  const whatsapp = document.getElementById("whatsapp").value;
+
+  document.getElementById("ticketTeamName").innerText = teamName;
+  document.getElementById("ticketGame").innerText = game;
+  document.getElementById("ticketWhatsApp").innerText = whatsapp;
+  document.getElementById("ticketDate").innerText = "Tanggal Pertandingan: 25 Agustus 2025"; // Contoh
+
+  document.getElementById("ticketModal").style.display = "block";
+}
+
+function closePaymentModal() {
+  document.getElementById("paymentModal").style.display = "none";
+  document.getElementById("ticketTeamName").innerText = document.getElementById("teamName").value;
+  document.getElementById("ticketGame").innerText = document.getElementById("game").value;
+  document.getElementById("ticketWhatsApp").innerText = document.getElementById("whatsapp").value;
+  document.getElementById("ticketDate").innerText = "Tanggal Pertandingan: 25 Agustus 2025";
+  document.getElementById("ticketModal").style.display = "block";
+}
+
+function showTeamModal() {
+  document.getElementById("teamNameDisplay").innerText = "EVOSIX";
+  document.getElementById("opponentTeam").innerText = "Team A";
+  document.getElementById("teamGame").innerText = "Mobile Legends";
+  document.getElementById("teamModal").style.display = "block";
+}
+
+function closeTicketModal() {
+  document.getElementById("ticketModal").style.display = "none";
+}
+
+function closeTeamModal() {
+  document.getElementById("teamModal").style.display = "none";
+}
 
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-links a");

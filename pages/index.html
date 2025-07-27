@@ -21,15 +21,91 @@
         <li class="dropdown-container" id="dropdown-trigger">
           <a href="#">Lainnya</a>
         </li>
-        <li><a href="#register" class="btn-glow">Register</a></li>
+        <li><a href="javascript:void(0)" class="btn-glow" id="openModal">Register</a></li>
       </ul>
     </div>
   </header>
 
   <ul class="dropdown-menu-fix" id="dropdown-menu">
-    <li><a href="#">Tiket</a></li>
-    <li><a href="#">Team</a></li>
+    <li><a href="javascript:void(0)" onclick="showTicketModal()">Tiket</a></li>
+    <li><a href="javascript:void(0)" onclick="showTeamModal()">Team</a></li>
   </ul>
+
+  
+
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <h3>Pendaftaran Tim</h3>
+      <form id="registerForm">
+        <div class="form-group">
+          <label>Nama Tim:</label>
+          <input type="text" placeholder="Masukkan Nama Tim" required>
+        </div>
+        <div class="form-group">
+          <label>Nama Ketua</label>
+          <input type="text" placeholder="Masukkan Nama Ketua Tim" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="Masukkan Email" required>
+        </div>
+        <div class="form-group">
+          <label>Nomor WhatsApp</label>
+          <input type="number" placeholder="Masukkan Nomor WhatsApp" required>
+        </div>
+        <div class="form-group">
+          <label>Game:</label>
+          <select required>
+            <option value="">Pilih Game</option>
+            <option value="strinova">Strinova</option>
+            <option value="valorant">Valorant</option>
+            <option value="pubg">Pubg Mobile</option>
+            <option value="mlbb">Mobile Legends</option>
+            <option value="mc">Minecraft</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Daftar</button>
+        <button type="button" class="close-btn" id="closeModal">Tutup</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <h3>Pilih Metode Pembayaran</h3>
+      <div class="payment-options">
+        <button onclick="showQRIS()">QRIS</button>
+        <button onclick="alert('Transfer bank belum tersedia')">Transfer Bank</button>
+      </div>
+      <div id="qrisContainer" style="display: none; margin-top: 20px;">
+        <p>Scan QR untuk pembayaran</p>
+        <img src="/images/Pembaayaran.png" alt="pembayaran" style="max-width: 200px;">
+      </div>
+      <button class="close-btn" onclick="closePaymentModal()">Tutup</button>
+    </div>
+  </div>
+
+  <div id="ticketModal" class="modal">
+  <div class="modal-content">
+    <h3>Tiket Pendaftaran</h3>
+    <p>Nama Tim: <span id="ticketTeamName"></span></p>
+    <p>Game: <span id="ticketGame"></span></p>
+    <p>Nomor WhatsApp: <span id="ticketWhatsApp"></span></p>
+    <p>Waktu Pertandingan: <span id="ticketDate"></span></p>
+    <button class="close-btn" onclick="closeTicketModal()">Tutup</button>
+  </div>
+</div>
+
+<!-- Modal Team -->
+<div id="teamModal" class="modal">
+  <div class="modal-content">
+    <h3>Tim Pertandingan</h3>
+    <p>Tim Anda: <span id="teamNameDisplay"></span></p>
+    <p>VS: <span id="opponentTeam"></span></p>
+    <p>Game: <span id="teamGame"></span></p>
+    <button class="close-btn" onclick="closeTeamModal()">Tutup</button>
+  </div>
+</div>
 
   <section class="hero" id="home">
     <video class="hero-bg" autoplay muted loop playsinline>
