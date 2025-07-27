@@ -128,7 +128,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0px 50px 0px 50px;
+    padding: 0px 2% 0px 2%;
 }
 
 .logo {
@@ -928,7 +928,18 @@ section:not(.sponsor .hero) {
 /* Eh dani cara bikin dropdown? */
 
 /* DANI KAMU URUS BAGIAN HP NANTI :v */
-@media (max-width: 768px) {
+
+.hamburger {
+    display: none;
+}
+
+.hamburger img {
+    width: 35px;
+    height: 35px;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(233deg) brightness(103%) contrast(103%);
+}
+
+@media (max-width: 1100px) {
   .prize-wrapper {
     flex-direction: column;
     align-items: center;
@@ -936,6 +947,14 @@ section:not(.sponsor .hero) {
 
   .prize-card {
     text-align: center;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
   }
 }
 
