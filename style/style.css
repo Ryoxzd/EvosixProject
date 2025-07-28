@@ -713,6 +713,7 @@ body {
 .announcement-item h3 {
     margin-bottom: 10px;
     font-size: 20px;
+    text-align: left;
 }
 
 .announcement-item p {
@@ -912,6 +913,7 @@ body {
     margin-bottom: 10px;
     color: #ffffff;
     font-weight: 600;
+    text-align: left;
 }
 
 .prize-card p {
