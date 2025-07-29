@@ -383,6 +383,12 @@ body {
 .sponsor {
     padding: 80px 20px;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .sponsor h2 {
@@ -625,7 +631,15 @@ body {
     color: white;
     padding: 80px 20px;
     font-family: 'Poppins', sans-serif;
+
+    display: flex;
+    min-height: 100vh;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
 
 .about-container {
     display: flex;
@@ -819,8 +833,10 @@ body {
 }
 
 .prize-pool {
-    padding: 80px 20px;
+    padding: 180px 0px 0px 0px;
     color: white;
+    height: 100vh;
+    min-height: 100vh;
 }
 
 .section-title-3 {
