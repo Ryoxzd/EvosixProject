@@ -1,76 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - EVOSIX</title>
-    <link rel="stylesheet" href="/style/register.html">
-    <link rel="stylesheet" href="/style/style.css">
-    <link rel="icon" href="/images/logo.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evosix Esports Tournament</title>
+  <link rel="stylesheet" href="/style/style.css" />
+  <link rel="icon" href="/images/logo.png">
+
 </head>
 <body>
-    <header class="navbar">
-        <div class="nav-container">
-            <div class="logo">EVOSIX</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Tentang</a></li>
-                <li><a href="#tagline">Informasi</a></li>
-                <li><a href="#hadiah">Hadiah</a></li>
-                <li><a href="#sponsor">Sponsor</a></li>
-                <li class="dropdown-container" id="dropdown-trigger">
-                <a href="#">Lainnya</a>
-                </li>
-                <li><a href="#register" class="btn-glow">Register</a></li>
-            </ul>
-        </div>
-    </header>
-    <section class="register-section" id="register">
-        <h2>Formulir Pendaftaran Tim</h2>
-        <form>
-        <div class="form-group">
-            <label>Nama Tim</label>
-            <input type="text" placeholder="Contoh: EVOSIX Team" required />
-        </div>
-        <div class="form-group">
-            <label>Nama Kapten</label>
-            <input type="text" placeholder="Contoh: Dani" required />
-        </div>
-        <div class="form-group">
-            <label>Email Aktif</label>
-            <input type="email" placeholder="Contoh: dani@email.com" required />
-        </div>
-        <div class="form-group">
-            <label>Nomor WhatsApp</label>
-            <input type="tel" placeholder="Contoh: 081234567890" required />
-        </div>
-        <div class="form-group">
-            <label>Pilih Game</label>
-            <select required>
-                <option value="">-- Pilih Game --</option>
+  <header class="navbar">
+    <div class="nav-container">
+      <img src="/images/logo - gepeng.png" alt="EVOSIX" class="logo">
+      <div class="hamburger">
+          <div>
+            <img src="/assets/burger.svg" alt="Burger">
+          </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#about">Tentang</a></li>
+        <li><a href="#tagline">Informasi</a></li>
+        <li><a href="#hadiah">Hadiah</a></li>
+        <li><a href="#sponsor">Sponsor</a></li>
+        <li class="dropdown-container" id="dropdown-trigger">
+          <a href="#">Lainnya</a>
+        </li>
+        <li><a href="javascript:void(0)" class="btn-glow" id="openModal">Register</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <ul class="dropdown-menu-fix" id="dropdown-menu">
+    <li><a href="javascript:void(0)" onclick="showTicketModal()">Tiket</a></li>
+    <li><a href="javascript:void(0)" onclick="showTeamModal()">Team</a></li>
+  </ul>
+
+  <section class="hero" id="home">
+    <video class="hero-bg" autoplay muted loop playsinline>
+        <source src="/video/8c5ac0e8-cd35-452c-b722-1051fa55c74d.mp4" type="video/mp4" />
+        Browser kamu tidak mendukung tag video.
+    </video>
+      <div class="hero-content">
+        <h1>-</h1>
+        <h1 class="no-wrap">Register tim</h1>
+      </div>
+      <div class="hero-countdown">
+        <form id="registerForm">
+            <div class="form-group">
+              <label>Nama Tim:</label>
+              <input type="text" placeholder="Masukkan Nama Tim" required>
+            </div>
+            <div class="form-group">
+              <label>Nama Ketua</label>
+              <input type="text" placeholder="Masukkan Nama Ketua Tim" required>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="Masukkan Email" required>
+            </div>
+            <div class="form-group">
+              <label>Nomor WhatsApp</label>
+              <input type="number" placeholder="Masukkan Nomor WhatsApp" required>
+            </div>
+            <div class="form-group">
+              <label>Game:</label>
+              <select required>
+                <option value="">Pilih Game</option>
                 <option value="strinova">Strinova</option>
                 <option value="valorant">Valorant</option>
                 <option value="pubg">Pubg Mobile</option>
                 <option value="mlbb">Mobile Legends</option>
                 <option value="mc">Minecraft</option>
-            </select>
-        </div>
-        <button type="submit" class="submit-btn">Daftar Sekarang</button>
-        </form>
-    </section>
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <h3>Pilih Metode Pembayaran</h3>
-            <div class="payment-options">
-            <button onclick="showQRIS()">QRIS</button>
-            <button onclick="alert('Transfer belum tersedia')">Transfer Bank</button>
+              </select>
             </div>
-            <div id="qrisContainer" style="display: none; margin-top: 20px;">
-            <p>Scan QR untuk pembayaran:</p>
-            <img src="/images/qris-dummy.png" alt="QRIS Dummy" style="max-width: 200px;" />
-            </div>
-            <button class="close-btn" onclick="closeModal()">Tutup</button>
-        </div>
+            <button type="submit" class="submit-btn">Daftar</button>
+            <button type="button" class="close-btn" id="closeModal">Tutup</button>
+          </form>
+      </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <img src="/images/logo - gepeng.png" alt="Evosix Logo" class="footer-logo" />
+        <p class="desc">Evolution of Esports Experience</p>
+      </div>
+      <div class="footer-column">
+        <h5>Game</h5>
+        <ul>
+          <li><a href="#">Strinova</a></li>
+          <li><a href="#">Valorant</a></li>
+          <li><a href="#">Pubg Mobile</a></li>
+          <li><a href="#">Mobile Legends</a></li>
+          <li><a href="#">Minecraft</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h5>Information</h5>
+        <ul>
+          <li><a href="#">Register Teams</a></li>
+          <li><a href="#">Schedule</a></li>
+          <li><a href="#">Tickets</a></li>
+          <li><a href="#">Blogs</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h5>Contact Us</h5>
+        <p>Jl. PB. Sudirman, Tanggul, Jember</p>
+        <p>(0336) 441347</p>
+        <p>smkn6.jember@yahoo.com</p>
+        <p>Senin - Jumat: 07:00 - 16:00</p>
+      </div>
     </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 EVOSIX Esports Tournament. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/scripts/scripts.js"></script>
 </body>
 </html>

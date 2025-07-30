@@ -483,7 +483,7 @@ body {
     color: #ccc;
     padding: 60px 20px 30px;
     font-family: sans-serif;
-    border-top: 4px solid #ff4747;
+    /* border-top: 1px solid #ff4747; */
 }
 
 .footer-container {
@@ -957,11 +957,29 @@ section:not(.sponsor .hero) {
 .modal-content {
     background-color: #222;
     padding: 30px;
-    border-radius: 10px;
-    width: 80%;
+    width: 60%;
     max-width: 500px;
     margin: 50px auto;
     color: white;
+    animation: updown 0.5s;
+    border: 1px solid #ff4747;
+    clip-path: polygon(
+        0% 95%,     
+        5% 0%, 
+        95% 0%,  
+        100% 0%,    
+        95% 100%,   
+        0% 100%
+    );
+
+    -webkit-clip-path: polygon(
+        0% 95%,
+        5% 0%,
+        95% 0%,
+        100% 0%,
+        95% 100%,
+        0% 100%
+    );
 }
 
 h3 {
@@ -970,21 +988,23 @@ h3 {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 8px;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-left: 15px;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
     padding: 12px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    background-color: #333;
+    border-radius: 10px;
+    background-color: #111;
+    border: 1px solid white;
     color: white;
     }
 
