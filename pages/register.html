@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Daftar Tim EVOSIX</title>
+<link rel="stylesheet" href="/style/regis.css">
+<style>
+  body { font-family: Arial, sans-serif; padding: 20px; }
+  .modal { display: none; position: fixed; top:0; left:0; width: 100%; height: 100%; 
+           background: rgba(0,0,0,0.5); justify-content: center; align-items: center; }
+  .modal-content { background: white; padding: 20px; border-radius: 5px; width: 90%; max-width: 400px; }
+  .btn { padding: 10px 15px; margin-top: 10px; cursor: pointer; }
+  .btn-primary { background: #e74c3c; color: white; border: none; }
+  .btn-secondary { background: #ccc; border: none; }
+  #ticket { white-space: pre-wrap; background: #f9f9f9; padding: 10px; border: 1px solid #ddd; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+    <h1>Daftar Tim EVOSIX</h1>
+    <form id="registerForm">
+        <label>Nama Tim:<br>
+            <input type="text" id="teamName" required>
+        </label><br><br>
+        
+        <label>Nama Ketua:<br>
+            <input type="text" id="leaderName" required>
+        </label><br><br>
+        
+        <label>Email:<br>
+            <input type="email" id="email" required>
+        </label><br><br>
+        
+        <label>Nomor WhatsApp:<br>
+            <input type="tel" id="whatsapp" required>
+        </label><br><br>
+        
+        <label>Game:<br>
+            <select id="game" required>
+            <option value="">Pilih Game</option>
+            <option value="Strinova">Strinova</option>
+            <option value="Valorant">Valorant</option>
+            <option value="PUBG Mobile">PUBG Mobile</option>
+            <option value="Mobile Legends">Mobile Legends</option>
+            <option value="Minecraft">Minecraft</option>
+            </select>
+        </label><br><br>
+        
+        <button type="submit" class="btn btn-primary">Daftar</button>
+    </form>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <h2>Pilih Metode Pembayaran</h2>
+            <button id="payQRIS" class="btn btn-primary">Bayar dengan QRIS</button>
+            <button id="payBank" class="btn btn-secondary">Transfer Bank (Belum Tersedia)</button>
+            <button id="closePayment" class="btn btn-secondary" style="float:right;">Tutup</button>
+            <div id="qrisContainer" style="display:none; margin-top:20px;">
+            <p>Scan QR untuk pembayaran:</p>
+            <img src="/images/Pembaayaran.png" alt="QRIS" />
+            <br><button id="confirmPayment" class="btn btn-primary" style="margin-top:10px;">Konfirmasi Pembayaran</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="ticketModal" class="modal">
+        <div class="modal-content">
+            <h2>Tiket Pendaftaran</h2>
+            <pre id="ticket"></pre>
+            <button id="downloadTicket" class="btn btn-primary">Download Tiket (TXT)</button>
+            <button id="printTicket" class="btn btn-secondary">Print Tiket</button>
+            <button id="closeTicket" class="btn btn-secondary" style="float:right;">Tutup</button>
+        </div>
+    </div>
+
+    <script>
+    const registerForm = document.getElementById('registerForm');
+    const paymentModal = document.getElementById('paymentModal');
+    const qrisContainer = document.getElementById('qrisContainer');
+    const ticketModal = document.getElementById('ticketModal');
+    const ticketPre = document.getElementById('ticket');
+
+    let registrationData = null;
+
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        registrationData = {
+        teamName: document.getElementById('teamName').value.trim(),
+        leaderName: document.getElementById('leaderName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        whatsapp: document.getElementById('whatsapp').value.trim(),
+        game: document.getElementById('game').value
+        };
+        paymentModal.style.display = 'flex';
+    });
+
+    document.getElementById('payQRIS').addEventListener('click', () => {
+        qrisContainer.style.display = 'block';
+    });
+
+    document.getElementById('payBank').addEventListener('click', () => {
+        alert('Transfer bank belum tersedia');
+    });
+
+    document.getElementById('closePayment').addEventListener('click', () => {
+        paymentModal.style.display = 'none';
+        qrisContainer.style.display = 'none';
+    });
+
+    document.getElementById('confirmPayment').addEventListener('click', () => {
+        paymentModal.style.display = 'none';
+        qrisContainer.style.display = 'none';
+        showTicket();
+    });
+
+    function showTicket() {
+        const ticketCode = 'EVSIX-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+        const now = new Date();
+        const ticketText = `
+    Nama Tim   : ${registrationData.teamName}
+    Ketua     : ${registrationData.leaderName}
+    Email     : ${registrationData.email}
+    WA        : ${registrationData.whatsapp}
+    Game      : ${registrationData.game}
+    Kode Tiket: ${ticketCode}
+    Tanggal   : ${now.toLocaleDateString()} ${now.toLocaleTimeString()}
+
+    -- Simpan tiket ini dan tunjukkan saat pertandingan --
+        `.trim();
+
+        ticketPre.textContent = ticketText;
+        ticketModal.style.display = 'flex';
+    }
+
+    document.getElementById('closeTicket').addEventListener('click', () => {
+        ticketModal.style.display = 'none';
+    });
+
+    document.getElementById('downloadTicket').addEventListener('click', () => {
+        const blob = new Blob([ticketPre.textContent], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `Tiket_${registrationData.teamName}.txt`;
+        link.click();
+    });
+
+    document.getElementById('printTicket').addEventListener('click', () => {
+        const printWindow = window.open('', '', 'width=600,height=400');
+        printWindow.document.write(`<pre>${ticketPre.textContent}</pre>`);
+        printWindow.document.close();
+        printWindow.focus();
+        printWindow.print();
+        printWindow.close();
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === paymentModal) {
+        paymentModal.style.display = 'none';
+        qrisContainer.style.display = 'none';
+        }
+        if (e.target === ticketModal) {
+        ticketModal.style.display = 'none';
+        }
+    });
+    </script>
+
+</body>
+</html>

@@ -54,46 +54,88 @@ menu.addEventListener('mouseenter', () => {
 });
 
 //bagian regis
-document.getElementById("openModal").addEventListener("click", function() {
-  document.getElementById("registerModal").style.display = "block";
+// Ambil elemen modal dan elemen penting lainnya
+const registerModal = document.getElementById("registerModal");
+const paymentModal = document.getElementById("paymentModal");
+const qrisContainer = document.getElementById("qrisContainer");
+const ticketModal = document.getElementById("ticketModal");
+const ticketPre = document.getElementById("ticket");
+
+let registrationData = {};
+
+// Event buka modal registrasi
+document.getElementById("openModal").addEventListener("click", () => {
+  registerModal.style.display = "block";
 });
 
-document.getElementById("closeModal").addEventListener("click", function() {
-  document.getElementById("registerModal").style.display = "none";
+// Event tutup modal registrasi
+document.getElementById("closeModal").addEventListener("click", () => {
+  registerModal.style.display = "none";
 });
 
-window.addEventListener("click", function(event) {
-  if (event.target == document.getElementById("registerModal")) {
-    document.getElementById("registerModal").style.display = "none";
-  }
+// Tutup modal kalau klik di luar konten modal (register dan payment)
+window.addEventListener("click", (event) => {
+  if (event.target === registerModal) registerModal.style.display = "none";
+  if (event.target === paymentModal) paymentModal.style.display = "none";
+  if (event.target === ticketModal) ticketModal.style.display = "none";
 });
 
-document.getElementById("registerForm").addEventListener("submit", function(e) {
+// Submit form registrasi
+document.getElementById("registerForm").addEventListener("submit", (e) => {
   e.preventDefault();
-  document.getElementById("registerModal").style.display = "none";
+
+  const form = e.target;
+  registrationData = {
+    teamName: form.teamName.value.trim(),
+    leaderName: form.leaderName.value.trim(),
+    email: form.email.value.trim(),
+    whatsapp: form.whatsapp.value.trim(),
+    game: form.game.value,
+  };
+
+  registerModal.style.display = "none";
+  paymentModal.style.display = "block";
 });
 
-document.getElementById("openModal").addEventListener("click", function() {
-  document.getElementById("registerModal").style.display = "block";
+// Tombol konfirmasi pembayaran
+document.getElementById("confirmPayment").addEventListener("click", () => {
+  paymentModal.style.display = "none";
+  qrisContainer.style.display = "none";
+
+  document.getElementById("ticketModal").style.display = "flex";
 });
 
-document.getElementById("closeModal").addEventListener("click", function() {
-  document.getElementById("registerModal").style.display = "none";
-});
-
-document.getElementById("registerForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-    document.getElementById("registerModal").style.display = "none"; 
-    document.getElementById("paymentModal").style.display = "block";
-});
-
+// Fungsi untuk menampilkan QRIS
 function showQRIS() {
-  document.getElementById("qrisContainer").style.display = "block";
+  qrisContainer.style.display = "block";
 }
 
-function closePaymentModal() {
-  document.getElementById("paymentModal").style.display = "none";
-}
+
+// Tombol tutup modal tiket
+document.getElementById("closeTicket").addEventListener("click", () => {
+  document.getElementById("ticketModal").style.display = "none";
+});
+
+document.getElementById("downloadTicket").addEventListener("click", () => {
+  const ticketImg = document.getElementById("ticketImage");
+  const link = document.createElement("a");
+  link.href = ticketImg.src;
+  link.download = "Tiket_EVOSIX.png";
+  link.click();
+});
+
+// Tombol print tiket
+document.getElementById("printTicket").addEventListener("click", () => {
+  const ticketImg = document.getElementById("ticketImage");
+  const printWindow = window.open("", "", "width=600,height=400");
+  printWindow.document.write(`<img src="${ticketImg.src}" style="max-width:100%;">`);
+  printWindow.document.close();
+  printWindow.focus();
+  printWindow.print();
+  printWindow.close();
+});
+
+
 
 window.onclick = function(event) {
   const registerModal = document.getElementById("registerModal");
@@ -117,7 +159,39 @@ function showTicketModal() {
   document.getElementById("ticketDate").innerText = "Tanggal Pertandingan: 25 Agustus 2025"; // Contoh
 
   document.getElementById("ticketModal").style.display = "block";
+  generateTicketImage(registrationData);
 }
+
+function showTicket() {
+  if (!registrationData.teamName) {
+    alert("Data registrasi belum lengkap!");
+    return;
+  }
+  generateTicketImage(registrationData);
+}
+
+
+    document.getElementById('closeTicket').addEventListener('click', () => {
+        ticketModal.style.display = 'none';
+    });
+
+    document.getElementById('downloadTicket').addEventListener('click', () => {
+        const blob = new Blob([ticketPre.textContent], { type: 'text/plain' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `Tiket_${registrationData.teamName}.txt`;
+        link.click();
+    });
+
+    document.getElementById('printTicket').addEventListener('click', () => {
+        const printWindow = window.open('', '', 'width=600,height=400');
+        printWindow.document.write(`<pre>${ticketPre.textContent}</pre>`);
+        printWindow.document.close();
+        printWindow.focus();
+        printWindow.print();
+        printWindow.close();
+    });
+
 
 function closePaymentModal() {
   document.getElementById("paymentModal").style.display = "none";

@@ -23,10 +23,12 @@
         <li><a href="#tagline">Informasi</a></li>
         <li><a href="#hadiah">Hadiah</a></li>
         <li><a href="#sponsor">Sponsor</a></li>
+        <li><a href="javascript:void(0)" onclick="showTeamModal()">Team</a></li>
+      
         <li class="dropdown-container" id="dropdown-trigger">
           <a href="#">Lainnya</a>
         </li>
-        <li><a href="/pages/login.html" class="btn-glow">Register</a></li>
+        <li><a id="openModal" class="btn-glow">Register</a></li>
       </ul>
     </div>
   </header>
@@ -42,23 +44,23 @@
       <form id="registerForm">
         <div class="form-group">
           <label>Nama Tim:</label>
-          <input type="text" placeholder="Masukkan Nama Tim" required>
+          <input type="text" name="teamName" placeholder="Masukkan Nama Tim" required>
         </div>
         <div class="form-group">
           <label>Nama Ketua</label>
-          <input type="text" placeholder="Masukkan Nama Ketua Tim" required>
+          <input type="text" name="leaderName" placeholder="Masukkan Nama Ketua Tim" required>
         </div>
         <div class="form-group">
           <label>Email</label>
-          <input type="email" placeholder="Masukkan Email" required>
+          <input type="email" name="email" placeholder="Masukkan Email" required>
         </div>
         <div class="form-group">
           <label>Nomor WhatsApp</label>
-          <input type="number" placeholder="Masukkan Nomor WhatsApp" required>
+          <input type="tel" name="whatsapp" placeholder="Masukkan Nomor WhatsApp" required>
         </div>
         <div class="form-group">
           <label>Game:</label>
-          <select required>
+          <select name="game" required>
             <option value="">Pilih Game</option>
             <option value="strinova">Strinova</option>
             <option value="valorant">Valorant</option>
@@ -85,17 +87,18 @@
         <img src="/images/Pembaayaran.png" alt="pembayaran" style="max-width: 200px;">
       </div>
       <button class="close-btn" onclick="closePaymentModal()">Tutup</button>
+      <br><button id="confirmPayment" class="close-btn" style="margin-top:10px;">Konfirmasi Pembayaran</button>
     </div>
   </div>
 
-  <div id="ticketModal" class="modal">
+<div id="ticketModal" class="modal">
   <div class="modal-content">
-    <h3>Tiket Pendaftaran</h3>
-    <p>Nama Tim: <span id="ticketTeamName"></span></p>
-    <p>Game: <span id="ticketGame"></span></p>
-    <p>Nomor WhatsApp: <span id="ticketWhatsApp"></span></p>
-    <p>Waktu Pertandingan: <span id="ticketDate"></span></p>
-    <button class="close-btn" onclick="closeTicketModal()">Tutup</button>
+    <h2>Tiket Pendaftaran</h2>
+    <!-- Hapus <pre id="ticket"></pre> -->
+    <img src="/images/ticketDummy.jpg" alt="ticket" id="ticketImage" style="max-width: 100%; height: auto;">
+    <button id="downloadTicket" class="close-btn">Download Tiket (PNG)</button>
+    <button id="printTicket" class="close-btn">Print Tiket</button>
+    <button id="closeTicket" class="close-btn" style="float:right;">Tutup</button>
   </div>
 </div>
 
