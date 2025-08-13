@@ -9,6 +9,26 @@ const countdown = () => {
         return;
     }
 
+function zoomQR(imgId) {
+  const img = document.getElementById(imgId);
+  const overlay = document.getElementById('qrZoom');
+  const zoomImg = document.getElementById('qrZoomImg');
+  if (!img || !overlay || !zoomImg) return;
+  zoomImg.src = img.src;
+  overlay.style.display = 'block';
+}
+
+function downloadQR(imgId, filename = 'qris.png') {
+  const img = document.getElementById(imgId);
+  if (!img) return;
+  const a = document.createElement('a');
+  a.href = img.src;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+}
+
     const second = 1000;
     const minute = second * 60;
     const hour = minute * 60;
@@ -85,10 +105,17 @@ document.getElementById("registerForm").addEventListener("submit", function(e) {
   e.preventDefault();
     document.getElementById("registerModal").style.display = "none"; 
     document.getElementById("paymentModal").style.display = "block";
+    // default selection
+    if (typeof showQRIS === 'function') {
+      showQRIS();
+    }
 });
 
 function showQRIS() {
   document.getElementById("qrisContainer").style.display = "block";
+  const bank = document.getElementById("bankContainer");
+  if (bank) bank.style.display = "none";
+  setActivePayTab('qris');
 }
 
 function closePaymentModal() {
@@ -105,6 +132,41 @@ window.onclick = function(event) {
     paymentModal.style.display = "none";
   }
 };
+
+function showBankTransfer() {
+  const qris = document.getElementById("qrisContainer");
+  const bank = document.getElementById("bankContainer");
+  if (qris) qris.style.display = "none";
+  if (bank) bank.style.display = "block";
+  setActivePayTab('bank');
+}
+
+function setActivePayTab(which) {
+  const tabQRIS = document.getElementById('tabQRIS');
+  const tabBank = document.getElementById('tabBank');
+  if (!tabQRIS || !tabBank) return;
+  tabQRIS.classList.remove('active');
+  tabBank.classList.remove('active');
+  if (which === 'qris') tabQRIS.classList.add('active');
+  if (which === 'bank') tabBank.classList.add('active');
+}
+
+function copyText(spanId) {
+  const el = document.getElementById(spanId);
+  if (!el) return;
+  const text = el.innerText.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    // Simple feedback by finding nearest button if any
+    const btn = event?.target;
+    if (btn && btn.tagName === 'BUTTON') {
+      const old = btn.innerText;
+      btn.innerText = 'Disalin!';
+      setTimeout(() => (btn.innerText = old), 1200);
+    } else {
+      alert('Disalin ke clipboard');
+    }
+  }).catch(() => alert('Gagal menyalin'));
+}
 
 function showTicketModal() {
   const teamName = document.getElementById("teamName").value;

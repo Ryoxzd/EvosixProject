@@ -39,26 +39,39 @@
   <div id="registerModal" class="modal">
     <div class="modal-content">
       <h3>Pendaftaran Tim</h3>
+      <div class="form-header">
+        <div class="form-chip"></div>
+        <div class="form-meta">
+          <span class="form-title">Daftarkan timmu sekarang</span>
+          <span class="form-sub">Isi data di bawah dengan benar</span>
+        </div>
+      </div>
       <form id="registerForm">
-        <div class="form-group">
-          <label>Nama Tim:</label>
-          <input type="text" placeholder="Masukkan Nama Tim" required>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nama Tim</label>
+            <input id="teamName" type="text" placeholder="Masukkan Nama Tim" required>
+          </div>
+          <div class="form-group">
+            <label>Nama Ketua</label>
+            <input type="text" placeholder="Masukkan Nama Ketua Tim" required>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Nama Ketua</label>
-          <input type="text" placeholder="Masukkan Nama Ketua Tim" required>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Masukkan Email" required>
+          </div>
+          <div class="form-group">
+            <label>Nomor WhatsApp</label>
+            <input id="whatsapp" type="tel" placeholder="08xxxxxxxxxx" inputmode="tel" required>
+          </div>
         </div>
+
         <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="Masukkan Email" required>
-        </div>
-        <div class="form-group">
-          <label>Nomor WhatsApp</label>
-          <input type="number" placeholder="Masukkan Nomor WhatsApp" required>
-        </div>
-        <div class="form-group">
-          <label>Game:</label>
-          <select required>
+          <label>Game</label>
+          <select id="game" required>
             <option value="">Pilih Game</option>
             <option value="strinova">Strinova</option>
             <option value="valorant">Valorant</option>
@@ -67,6 +80,7 @@
             <option value="mc">Minecraft</option>
           </select>
         </div>
+
         <button type="submit" class="submit-btn">Daftar</button>
         <button type="button" class="close-btn" id="closeModal">Tutup</button>
       </form>
@@ -77,12 +91,69 @@
     <div class="modal-content">
       <h3>Pilih Metode Pembayaran</h3>
       <div class="payment-options">
-        <button onclick="showQRIS()">QRIS</button>
-        <button onclick="alert('Transfer bank belum tersedia')">Transfer Bank</button>
+        <button id="tabQRIS" class="pay-tab" onclick="showQRIS()">QRIS</button>
+        <button id="tabBank" class="pay-tab" onclick="showBankTransfer()">Transfer Bank</button>
       </div>
       <div id="qrisContainer" style="display: none; margin-top: 20px;">
-        <p>Scan QR untuk pembayaran</p>
-        <img src="/images/Pembaayaran.png" alt="pembayaran" style="max-width: 200px;">
+        <div class="qris-card">
+          <div class="qris-header">
+            <div class="qris-chip"></div>
+            <div class="qris-meta">
+              <span class="qris-title">QRIS</span>
+              <span class="qris-sub">Scan untuk membayar</span>
+            </div>
+          </div>
+          <div class="qris-image-wrap">
+            <img id="qrisImage" src="/images/Pembaayaran.png" alt="QRIS" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nominal (opsional)</label>
+              <input type="tel" placeholder="Contoh: 150000" inputmode="numeric">
+            </div>
+            <div class="form-group">
+              <label>Catatan (opsional)</label>
+              <input type="text" placeholder="ID tim atau nama pengirim">
+            </div>
+          </div>
+          <div class="qris-actions">
+            <button type="button" class="qris-btn" onclick="zoomQR('qrisImage')">Zoom QR</button>
+            <button type="button" class="qris-btn primary" onclick="downloadQR('qrisImage','QRIS-Evosix.png')">Download QR</button>
+          </div>
+        </div>
+      </div>
+      <div id="bankContainer" style="display: none; margin-top: 20px;">
+        <div class="bank-card">
+          <div class="bank-header">
+            <div class="bank-chip"></div>
+            <div class="bank-meta">
+              <span class="bank-name" id="bankName">BCA</span>
+              <span class="bank-holder" id="bankHolder">EVOSIX ESPORTS</span>
+            </div>
+          </div>
+
+          <div class="bank-number-row">
+            <div class="bank-number" id="bankNumber">1234567890</div>
+            <button type="button" class="copy-btn" onclick="copyText('bankNumber')">Salin</button>
+          </div>
+
+          <div class="form-row bank-extra">
+            <div class="form-group">
+              <label>Nominal (opsional)</label>
+              <input type="tel" placeholder="Contoh: 150000" inputmode="numeric">
+            </div>
+            <div class="form-group">
+              <label>Catatan/Referensi (opsional)</label>
+              <input type="text" placeholder="ID tim atau nama pengirim">
+            </div>
+          </div>
+
+          <ul class="bank-steps">
+            <li><span class="step-badge">1</span> Transfer ke rekening di atas.</li>
+            <li><span class="step-badge">2</span> Simpan bukti transfer.</li>
+            <li><span class="step-badge">3</span> Kirim bukti ke WhatsApp panitia untuk verifikasi.</li>
+          </ul>
+        </div>
       </div>
       <button class="close-btn" onclick="closePaymentModal()">Tutup</button>
     </div>
@@ -117,7 +188,7 @@
       <div class="hero-content">
         <h1 class="no-wrap">Satu panggung, satu tujuan.</h1>
           <p>Kumpulkan timmu, taklukkan pertandingan, dan tinggalkan jejak dalam dunia esports sekolah.</p>
-          <a href="#tournament-info" class="btn-outline">Lihat Informasi Turnamen</a>
+          <a href="#tagline" class="btn-outline">Lihat Informasi Turnamen</a>
           <a href="javascript:void(0)" class="btn-red" id="openModal">Daftar Timmu Sekarang</a>
       </div>
       <div class="hero-countdown">
@@ -327,6 +398,13 @@
       <p>&copy; 2025 EVOSIX Esports Tournament. All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- QR Zoom Overlay -->
+  <div id="qrZoom" class="qr-zoom-overlay">
+    <div class="inner" onclick="this.parentElement.style.display='none'">
+      <img id="qrZoomImg" src="" alt="QR Zoom" />
+    </div>
+  </div>
 
   <script src="/scripts/scripts.js"></script>
 </body>

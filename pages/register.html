@@ -26,7 +26,7 @@
         <li class="dropdown-container" id="dropdown-trigger">
           <a href="#">Lainnya</a>
         </li>
-        <li><a href="javascript:void(0)" class="btn-glow" id="openModal">Register</a></li>
+        <li><a href="/pages/login.html" class="btn-glow-active">Register</a></li>
       </ul>
     </div>
   </header>
@@ -36,47 +36,122 @@
     <li><a href="javascript:void(0)" onclick="showTeamModal()">Team</a></li>
   </ul>
 
+  <div id="registerModal" class="modal">
+    <div class="modal-content">
+      <h3>Pendaftaran Tim</h3>
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="teamName">Nama Tim:</label>
+          <input id="teamName" name="teamName" type="text" placeholder="Masukkan Nama Tim" required>
+        </div>
+        <div class="form-group">
+          <label for="leaderName">Nama Ketua</label>
+          <input id="leaderName" name="leaderName" type="text" placeholder="Masukkan Nama Ketua Tim" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="Masukkan Email" required>
+        </div>
+        <div class="form-group">
+          <label for="whatsapp">Nomor WhatsApp</label>
+          <input id="whatsapp" name="whatsapp" type="tel" placeholder="08xxxxxxxxxx" required>
+        </div>
+        <div class="form-group">
+          <label for="game">Game:</label>
+          <select id="game" name="game" required>
+            <option value="">Pilih Game</option>
+            <option value="Strinova">Strinova</option>
+            <option value="Valorant">Valorant</option>
+            <option value="PUBG Mobile">Pubg Mobile</option>
+            <option value="Mobile Legends">Mobile Legends</option>
+            <option value="Minecraft">Minecraft</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Daftar</button>
+        <button type="button" class="close-btn" id="closeModal">Tutup</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="paymentModal" class="modal">
+    <div class="modal-content">
+      <h3>Pilih Metode Pembayaran</h3>
+      <div class="payment-options">
+        <button onclick="showQRIS()">QRIS</button>
+        <button onclick="alert('Transfer bank belum tersedia')">Transfer Bank</button>
+      </div>
+      <div id="qrisContainer" style="display: none; margin-top: 20px;">
+        <p>Scan QR untuk pembayaran</p>
+        <img src="/images/Pembaayaran.png" alt="pembayaran" style="max-width: 200px;">
+      </div>
+      <button class="close-btn" onclick="closePaymentModal()">Tutup</button>
+    </div>
+  </div>
+
+  <div id="ticketModal" class="modal">
+  <div class="modal-content">
+    <h3>Tiket Pendaftaran</h3>
+    <p>Nama Tim: <span id="ticketTeamName"></span></p>
+    <p>Game: <span id="ticketGame"></span></p>
+    <p>Nomor WhatsApp: <span id="ticketWhatsApp"></span></p>
+    <p>Waktu Pertandingan: <span id="ticketDate"></span></p>
+    <button class="close-btn" onclick="closeTicketModal()">Tutup</button>
+  </div>
+</div>
+
+<div id="teamModal" class="modal">
+  <div class="modal-content">
+    <h3>Tim Pertandingan</h3>
+    <p>Tim Anda: <span id="teamNameDisplay"></span></p>
+    <p>VS: <span id="opponentTeam"></span></p>
+    <p>Game: <span id="teamGame"></span></p>
+    <button class="close-btn" onclick="closeTeamModal()">Tutup</button>
+  </div>
+</div>
+
   <section class="hero" id="home">
     <video class="hero-bg" autoplay muted loop playsinline>
         <source src="/video/8c5ac0e8-cd35-452c-b722-1051fa55c74d.mp4" type="video/mp4" />
         Browser kamu tidak mendukung tag video.
     </video>
       <div class="hero-content">
-        <h1>-</h1>
-        <h1 class="no-wrap">Register tim</h1>
-      </div>
-      <div class="hero-countdown">
-        <form id="registerForm">
+        <div>
+        <h1 class="no-wrap">Daftarkan timmu ke EVOSIX.</h1>
+        <p>Lengkapi data tim dan amankan slot turnamen. Tiket akan muncul setelah pembayaran.</p>
+        </div>
+        <div>
+          <form action="">
             <div class="form-group">
-              <label>Nama Tim:</label>
-              <input type="text" placeholder="Masukkan Nama Tim" required>
+              <label for="teamName">Nama Tim:</label>
+              <input id="teamName" name="teamName" type="text" placeholder="Masukkan Nama Tim" required>
             </div>
             <div class="form-group">
-              <label>Nama Ketua</label>
-              <input type="text" placeholder="Masukkan Nama Ketua Tim" required>
+              <label for="leaderName">Nama Ketua</label>
+              <input id="leaderName" name="leaderName" type="text" placeholder="Masukkan Nama Ketua Tim" required>
             </div>
             <div class="form-group">
-              <label>Email</label>
-              <input type="email" placeholder="Masukkan Email" required>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="Masukkan Email" required>
             </div>
             <div class="form-group">
-              <label>Nomor WhatsApp</label>
-              <input type="number" placeholder="Masukkan Nomor WhatsApp" required>
+              <label for="whatsapp">Nomor WhatsApp</label>
+              <input id="whatsapp" name="whatsapp" type="tel" placeholder="08xxxxxxxxxx" required>
             </div>
             <div class="form-group">
-              <label>Game:</label>
-              <select required>
+              <label for="game">Game:</label>
+              <select id="game" name="game" required>
                 <option value="">Pilih Game</option>
-                <option value="strinova">Strinova</option>
-                <option value="valorant">Valorant</option>
-                <option value="pubg">Pubg Mobile</option>
-                <option value="mlbb">Mobile Legends</option>
-                <option value="mc">Minecraft</option>
+                <option value="Strinova">Strinova</option>
+                <option value="Valorant">Valorant</option>
+                <option value="PUBG Mobile">Pubg Mobile</option>
+                <option value="Mobile Legends">Mobile Legends</option>
+                <option value="Minecraft">Minecraft</option>
               </select>
             </div>
             <button type="submit" class="submit-btn">Daftar</button>
             <button type="button" class="close-btn" id="closeModal">Tutup</button>
           </form>
+        </div>
       </div>
   </section>
 

@@ -59,6 +59,13 @@
     }
 }
 
+/* Futuristic subtle neon pulse */
+@keyframes neonPulse {
+    0% { box-shadow: 0 0 0 rgba(255,71,71,0); }
+    50% { box-shadow: 0 0 18px rgba(255,71,71,0.18); }
+    100% { box-shadow: 0 0 0 rgba(255,71,71,0); }
+}
+
 @media (max-width: 600px) {
     #countdown div {
         padding: 16px 20px;
@@ -228,6 +235,14 @@ body {
     box-shadow: 0 0 12px #ff1c1c, 0 0 24px rgba(255, 28, 28, 0.5);
 }
 
+.btn-glow-active {
+    background: #ff1e1e;
+    padding: 8px 18px;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 700;
+    box-shadow: 0 0 10px #ff1e1e, 0 0 20px rgba(255, 111, 111, 0.5);
+}
 
 .hero {
     position: relative;
@@ -956,7 +971,9 @@ section:not(.sponsor .hero) {
 }
 
 .modal-content {
-    background: rgba(10, 10, 20, 0.6);
+    background:
+      linear-gradient(180deg, rgba(20,20,28,0.85), rgba(10,10,18,0.75))
+      left/cover no-repeat;
     padding: 30px;
     width: 60%;
     max-width: 500px;
@@ -964,6 +981,8 @@ section:not(.sponsor .hero) {
     color: white;
     animation: updown 0.5s;
     border: 1px solid #ff4747;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(255,71,71,0.08);
+    border-radius: 12px;
     clip-path: polygon(
         0% 95%,     
         5% 0%, 
@@ -986,10 +1005,41 @@ section:not(.sponsor .hero) {
 h3 {
     text-align: center;
     color: #ff4747;
+    margin-bottom: 16px;
+}
+
+/* Registration form header */
+.form-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0 14px;
+}
+
+.form-chip {
+    width: 34px;
+    height: 24px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #ff4747, #7a1f1f);
+    box-shadow: 0 0 12px rgba(255,71,71,0.35);
+}
+
+.form-meta { display: flex; flex-direction: column; align-items: flex-start; }
+.form-title { font-weight: 800; letter-spacing: .8px; }
+.form-sub { color: #bbb; font-size: 13px; }
+
+/* Minimal neon divider under titles */
+.modal-content h3::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 3px;
+    margin: 10px auto 4px;
+    background: linear-gradient(90deg, transparent, #ff4747, transparent);
 }
 
 .form-group {
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 
 .form-group label {
@@ -1005,25 +1055,81 @@ h3 {
     padding: 12px;
     border-radius: 10px;
     background-color: #111;
-    border: 1px solid white;
+    border: 1px solid #333;
     color: white;
+}
+
+.form-group input::placeholder {
+    color: #888;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #ff4747;
+    box-shadow: 0 0 0 3px rgba(255, 71, 71, 0.15);
+}
+
+/* Minimal input aesthetics */
+.form-group input,
+.form-group select {
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+    caret-color: #ff4747;
+}
+
+/* Two-column layout for form rows */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 6px;
+}
+
+@media (max-width: 640px) {
+    .form-row {
+        grid-template-columns: 1fr;
     }
+    .modal-content {
+        width: 92%;
+        margin: 30px auto;
+        padding: 22px;
+    }
+}
 
 .submit-btn,
 .close-btn {
-    background: #ff4747;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
+    padding: 12px 20px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
 }
 
 .submit-btn:hover,
 .close-btn:hover {
-    background: #ff1c1c;
+    filter: brightness(1.05);
+}
+
+/* Primary vs secondary buttons */
+.submit-btn {
+    background: #ff4747;
+    border: 1px solid #ff4747;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(255,71,71,0.25);
+    animation: neonPulse 2.8s ease-in-out infinite;
+}
+
+.close-btn {
+    background: transparent;
+    border: 1px solid #444;
+    color: #ddd;
+}
+
+.close-btn:hover {
+    border-color: #666;
 }
 
 .payment-options {
@@ -1033,16 +1139,36 @@ h3 {
 }
 
 .payment-options button {
-    background: #ff4747;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
+    background: linear-gradient(180deg, #161616, #101010);
+    color: #fff;
+    border: 1px solid #333;
+    padding: 10px 18px;
+    border-radius: 8px;
     cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: .6px;
 }
 
 .payment-options button:hover {
-    background: #ff1c1c;
+    border-color: #ff4747;
+    box-shadow: 0 0 10px rgba(255,71,71,0.2);
+}
+
+/* Pay tabs */
+.pay-tab {
+    position: relative;
+    overflow: hidden;
+}
+.pay-tab.active {
+    border-color: #ff4747;
+    box-shadow: inset 0 0 0 1px rgba(255,71,71,0.2), 0 0 12px rgba(255,71,71,0.15);
+}
+.pay-tab.active::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(120px 40px at 50% 120%, rgba(255,71,71,0.18), transparent 60%);
+    pointer-events: none;
 }
 
 #qrisContainer {
@@ -1051,9 +1177,186 @@ h3 {
 
 #qrisContainer img {
     width: 100%;
-    max-width: 200px;
-    margin-top: 20px;
+    max-width: 240px;
+    margin-top: 16px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
+
+/* Bank transfer card */
+.bank-card {
+    position: relative;
+    background: linear-gradient(180deg, #141418, #0f0f13);
+    border: 1px solid #262626;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+
+.bank-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.bank-chip {
+    width: 34px;
+    height: 24px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #ff4747, #7a1f1f);
+    box-shadow: 0 0 12px rgba(255,71,71,0.35);
+}
+
+.bank-meta { display: flex; flex-direction: column; }
+.bank-name { font-weight: 800; letter-spacing: .8px; }
+.bank-holder { color: #bbb; font-size: 13px; }
+
+.bank-number-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+    margin: 10px 0 6px;
+}
+
+.bank-number {
+    font-family: 'Horizon', sans-serif;
+    letter-spacing: 1.2px;
+    padding: 10px 12px;
+    border: 1px solid #333;
+    border-radius: 10px;
+    background: #0f0f0f;
+    text-align: center;
+}
+
+.bank-extra { margin-top: 6px; }
+
+.bank-steps {
+    margin-top: 8px;
+    list-style: none;
+    padding-left: 0;
+}
+.bank-steps li { margin: 8px 0; color: #bbb; }
+.step-badge {
+    display: inline-grid;
+    place-items: center;
+    width: 20px; height: 20px;
+    border-radius: 999px;
+    background: #ff4747;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    margin-right: 8px;
+}
+
+.bank-line { margin: 6px 0; }
+
+.copy-btn {
+    margin-top: 10px;
+    width: 100%;
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+}
+
+.copy-btn:hover {
+    border-color: #ff4747;
+    box-shadow: 0 0 10px rgba(255,71,71,0.2);
+}
+
+/* QRIS card */
+.qris-card {
+    background: linear-gradient(180deg, #141418, #0f0f13);
+    border: 1px solid #262626;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+
+.qris-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.qris-chip {
+    width: 34px;
+    height: 24px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #ff4747, #7a1f1f);
+    box-shadow: 0 0 12px rgba(255,71,71,0.35);
+}
+
+.qris-meta { display: flex; flex-direction: column; align-items: flex-start; }
+.qris-title { font-weight: 800; letter-spacing: .8px; }
+.qris-sub { color: #bbb; font-size: 13px; }
+
+.qris-image-wrap { display: grid; place-items: center; margin: 6px 0 10px; }
+.qris-image-wrap img { max-width: 240px; width: 100%; }
+
+.qris-actions { display: flex; gap: 12px; margin-top: 8px; }
+.qris-btn {
+    flex: 1;
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid #333;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+}
+.qris-btn.primary { background: #ff4747; border-color: #ff4747; box-shadow: 0 0 10px rgba(255,71,71,.25); }
+.qris-btn:hover { border-color: #ff4747; box-shadow: 0 0 10px rgba(255,71,71,.2); }
+
+/* Zoom overlay for QR */
+.qr-zoom-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    z-index: 10000;
+    backdrop-filter: blur(2px);
+}
+.qr-zoom-overlay .inner { height: 100%; display: grid; place-items: center; }
+.qr-zoom-overlay img { width: min(90vw, 480px); border-radius: 12px; border: 1px solid #333; box-shadow: 0 12px 36px rgba(0,0,0,.6); }
+
+/* Gaming UI info look for ticket/team modals */
+#ticketModal .modal-content p,
+#teamModal .modal-content p {
+    background: #101010;
+    border: 1px solid #262626;
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin: 10px 0;
+}
+
+#ticketModal .modal-content span,
+#teamModal .modal-content span {
+    color: #ff4747;
+    font-weight: 700;
+}
+
+/* Decorative corner accents */
+.modal-content::before,
+.modal-content::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ff4747;
+}
+
+.modal-content::before { top: 14px; left: 14px; border-right: none; border-bottom: none; opacity: .6; }
+.modal-content::after { bottom: 14px; right: 14px; border-left: none; border-top: none; opacity: .6; }
 
 
 
